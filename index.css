@@ -1,0 +1,33 @@
+*
+{
+    margin:0;
+    padding:0;
+}
+nav
+{
+    background-color: pink;
+    display:flex;
+    gap:3%;
+}
+ul
+{
+    background-color: pink;
+    display:flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-around;
+    width:50%;
+}
+li
+{
+    
+    width:100%;
+}
+li a
+{
+    text-align: center;
+    display:block;
+    text-decoration: none;
+    color:black;
+    width:50%;
+}
