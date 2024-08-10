@@ -1,0 +1,17 @@
+*
+{
+    padding:0;
+    margin: 0;
+}
+h3
+{
+    text-align: center;
+}
+.vtuber-database-items
+{
+    text-align: center;
+    padding: 50vh;
+    display: flex;
+    justify-content: center;  
+    justify-content: space-between; 
+}
