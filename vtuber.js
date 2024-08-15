@@ -1,10 +1,13 @@
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("vtuber.php")
-    .then((response) => response.text()) // Handle response as text
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("api/vtuber")
+    .then((response) => response.json())
     .then((data) => {
-      console.log("Server Response: Connected"); // Log the response to the console
+      const vtuber_name = document.getElementsByClassName("vtuber_name");
+      vtuber_name.textContent = data.name;
+      console.log(vtuber_name);
+      console.log(data.name);
     })
     .catch((error) => {
-      console.error("Fetch error:", error); // Log any errors to the console
+      console.log(error);
     });
 });
