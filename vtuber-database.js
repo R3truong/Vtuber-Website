@@ -10,53 +10,29 @@ const client = new Client({
   password: "password",
   database: "vtuberdatabase",
 });
-let jsonVtuber;
 const app = express(),
   port = 3000;
 app.use(cors());
-let id;
 client.connect();
 
-// client.query('SELECT * from vtuber WHERE "ID" = 1');
+app.get("/vtuber", async (req, res) => {
+  const allVtubersResult = await client.query("SELECT * FROM vtuber");
+  const allVtubers = allVtubersResult.rows;
 
-app.get("/vtuber", (req, res) => {
-  id = client.query(`SELECT * FROM vtuber`, (err, res) => {
-    id = Math.floor(Math.random() * res.rowCount) + 1;
-  });
-  client.query(`SELECT * from vtuber WHERE "ID" = ${id}`, (err, res) => {
-    if (!err) {
-      const vtuberData = res.rows[0];
-      jsonVtuber = {
-        name: vtuberData.Name,
-        agency: vtuberData.Agency,
-        channel: vtuberData.Channel,
-        face: vtuberData.Face,
-        body: vtuberData.Body,
-      };
-    } else {
-      console.log(err.message);
-    }
-    client.end;
-  });
+  const randomIndex = Math.floor(Math.random() * allVtubers.length);
+  const selectedVtuber = allVtubers[randomIndex];
+  console.log(selectedVtuber);
+  const jsonVtuber = {
+    name: selectedVtuber.Name,
+    agency: selectedVtuber.Agency,
+    channel: selectedVtuber.Channel,
+    face: selectedVtuber.Face,
+    body: selectedVtuber.Body,
+  };
+  client.close;
   res.send(jsonVtuber);
 });
 
 app.listen(port, () => {
   console.log(`Server running at: http://localhost:${port}`);
 });
-
-//   client.query('SELECT * from vtuber WHERE "ID" = 1', (error, result) => {
-//     if (error) {
-//       console.error("Error querying database: ", error.stack);
-//     } else {
-//       const vtuberData = result.rows[0];
-//       let vtuberJson = {
-//         name: vtuberData.Name,
-//         agency: vtuberData.Agency,
-//         channel: vtuberData.Channel,
-//         face: vtuberData.Face,
-//         body: vtuberData.Body,
-//       };
-//       res.send(JSON.stringify(vtuberJson));
-//     }
-//   });
