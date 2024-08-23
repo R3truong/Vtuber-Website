@@ -14,17 +14,23 @@ body
     min-height: 100%;
     display:grid;
 }
-.body-color
-{
-    background-color: rgb(255,255,255);
-}
 nav
 {
     display:flex;
     background-color: #FFC0CB;
     align-items: center;
+    line-height: 0;
 }
-ul
+.nav-item
+{
+    font-size:20px;
+    padding-right: 16px;
+}
+.footer-color
+{
+    background-color: #FFC0CB;
+}
+/* ul
 {
     list-style-type: none;
     overflow:hidden;
@@ -48,5 +54,5 @@ li a:hover
 }
 .active
 {
-    background-color: #ffacba;
 }
+*/
