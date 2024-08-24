@@ -16,3 +16,25 @@ h3
     justify-content: space-between; 
     align-items: center;
 }
+body
+{
+    height: auto;
+    min-height: 100%;
+    display:grid;
+}
+nav
+{
+    display:flex;
+    background-color: #FFC0CB;
+    align-items: center;
+    line-height: 0;
+}
+.nav-item
+{
+    font-size:20px;
+    padding-right: 16px;
+}
+.footer-color
+{
+    background-color: #FFC0CB;
+}
